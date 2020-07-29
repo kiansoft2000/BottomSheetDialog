@@ -8,10 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bottomsheetdialog.BottomSheetDialog;
+import com.example.bottomsheetdialog.MyDialog;
 import com.example.bottomsheetdialog.R;
 
-public class MainActivity extends AppCompatActivity implements BottomSheetDialog.MyDialogeventListener {
+public class MainActivity extends AppCompatActivity implements MyDialog.MyDialogeventListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements BottomSheetDialog
         showDialogBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetDialog myDialog = new BottomSheetDialog();
+                MyDialog myDialog = new MyDialog();
                 //myDialog.setCancelable(false);
                 myDialog.show(getSupportFragmentManager(), null);
 

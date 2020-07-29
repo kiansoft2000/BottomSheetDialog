@@ -6,29 +6,28 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 
-public class BottomSheetDialog extends DialogFragment {
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+public class MyDialog extends BottomSheetDialogFragment {
     private MyDialogeventListener eventListener;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        eventListener= (MyDialogeventListener) context;
+        eventListener = (MyDialogeventListener) context;
     }
 
-    @NonNull
+    @Nullable
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        final View view = LayoutInflater.from(getContext()).inflate(R.layout.bottom_sheet_dialog, null, false);
-        builder.setView(view);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        final View view = LayoutInflater.from(getContext()).inflate(R.layout.my_dialog, container, false);
         Button okBtn = view.findViewById(R.id.btn_dialog_ok);
         Button cancelBtn = view.findViewById(R.id.btn_dialog_cancel);
         final EditText editText = view.findViewById(R.id.et_dialog_input);
@@ -54,7 +53,8 @@ public class BottomSheetDialog extends DialogFragment {
             }
         });
 
-        return builder.create();
+
+        return view;
     }
 
     public interface MyDialogeventListener {
